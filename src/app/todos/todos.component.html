@@ -1,0 +1,30 @@
+<section class="heading-section">
+    <h1 class="title is-1 has-text-centered"> Todos </h1>
+</section>
+
+<div class="container">
+    <div class="todo">
+        <form (submit)="addTodo()"> 
+            <h2 class="title is-2">
+                New Todo
+            </h2>
+            <div class="field is-grouped">
+                <div class="control  is-expanded">
+                  <input 
+                      class="input todo__input" 
+                      name="inputTodo"
+                      type="text" 
+                      placeholder="Enter todo..."
+                      [(ngModel)]="inputTodo">
+                </div>
+                <input type="submit" value="Add Todo" class="todo__submit" />
+              </div>              
+        </form>
+
+        <div class="todo__item {{ (todo.completed ? 'done' : '') }}" *ngFor="let todo of todos; let i = index;" >
+          <div class="id">{{ i + 1 }}</div>
+          <div class="content" (click)="toggleDone(i)"> {{ todo.content }}</div>
+          <div class="delete" (click)="deleteTodo(i)">Remove</div>
+        </div>
+    </div>
+</div>
